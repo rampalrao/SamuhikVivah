@@ -7,6 +7,7 @@
 <title>Samuhik Vivah , Free group wedding in Kushinagar(U.P)</title>
 <meta name="description" content="Samuhik Vivah free wedding foundation for poor family arrange free wedding services in Kushinagar (U.P) Gath Bandhan Samuhik Shadi,Samuhik Vivah in Kushinagar (U.P), free group marriage  in Kushinagar (U.P)">
 <meta name="keywords" content="Gath Bandhan Samuhik Vivah, free Group wedding,free wedding services in Kushinagar (U.P), Samuhik Shadi,Samuhik Vivah in Kushinagar (U.P), free group marriages  in Kushinagar (U.P)">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="author" content="Samuhik Vivah">
 <meta name="Copyright" content="Samhuik Vivah">
 <meta name="robots" content="index, follow">
@@ -28,24 +29,35 @@
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="resources/css/icon.png">
+<link type="text/css" rel="stylesheet" href="resources/css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="resources/css/common.css" />
 </head>
 <body>
-
-<div class="wrapper">
-
+<div class="container">
 <c:if test = "${not empty successMsg}">
-<h3 class="success-msg">${successMsg}</h3>
+<div class="row">
+<div class="col-md-12"><h3 class="success-msg">${successMsg}</h3></div>
+</div>
 </c:if>
 
+<div class="row">
+<div class="col-md-12"><h2 class="welcome-text">Welcome to Samuhik Vivah</h2>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
 <div class="about-detail">
-<h2 class="welcome-text">Welcome to Samuhik Vivah</h2>
 		This is the platform where poor or needy people or anyone who knows such people around them can register with us for marraige of their daughter, First they have to find suitable life partner for their daughter afterward we will include her in samuhik shadi, which will take place at my home address for other pairs as well.Please feel free to contact me or register here or visit my home place.
 		</br>
 		</br>
 		<b>Note*</b>:Preferably brides/grooms should be from Kushingar(UP) disctrict.All the expences incurred in samuhik vivah will be take care by us.
-	</div>
+</div>
+</div>
+</div>
 
+<div class="row">
+<div class="col-md-4">
 <div class="my-address">
         <h3>Home Address</h3>
 	<p>Gamha Rao</p>
@@ -55,9 +67,12 @@
 	<p><b>District:</b> Kushinagar</p>
 	<p><b>Pincode:</b> 274401</p>
     </div>
+</div>
+
+<div class="col-md-4">
     <div class="registration-form">
        <h3>Register Here!</h3>
-     	<form:form method="post" action="addUser" modelAttribute="user">
+<form:form method="post" action="addUser" modelAttribute="user">
                          <table >
                           <tr>
         			 <td><form:label path="name">Name</form:label></td>
@@ -70,13 +85,21 @@
         		      <tr>
         			 <td><form:label path="address">Address</form:label></td>
         			 <td><form:textarea path="address" rows="5" cols="30" /></td>
-        		     </tr>
-                          <tr>
-                           <td colspan="2"><input type="submit" value="Register" /></td>
+				</tr>
+			<tr>
+			   <td></td>
+                           <td>
+				<div class="form-group">
+				<button class="btn btn-primary " name="submit" type="submit">Submit</button>
+				</div>
+			</td>
                           </tr>
                          </table>
                   </form:form>
 </div>
+</div>
+
+<div class="col-md-4">
 <div class="contact-me">
         <h3>Contact me</h3>
 	<p>Rampal Rao</p>
@@ -86,12 +109,21 @@
 	<p><b>Twitter:</b> <a href = "https://twitter.com/im_rprao" style="text-decoration:none">@im_rprao</a></p>
 	<p><b>Wiki:</b> <a href = "https://en.wikipedia.org/wiki/User:Rampal_Rao" style="text-decoration:none">Rampal_Rao</a></p>
     </div>
-</br>
-   <div class="count-view">
+</div>
+</div>
+</div>
+<div class="row">
+
+<div class="col-md-4"></div
+
+<div class="col-md-4">
+<div class="count-view">
    <h4>Total Registration Count: ${registrationCount}</h4>
    <h4>Total Page View Count: ${pageViewCount}</h4>
    </div>
 </div>
 
+<div class="col-md-4"></div
+</div>
 </body>
 </html>

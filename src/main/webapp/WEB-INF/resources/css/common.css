@@ -1,5 +1,5 @@
 body {
-  background-image: url("bg.png");
+  background-image: url("bg.jpg");
 }
 td {
     height: 40px;
@@ -32,6 +32,7 @@ padding-left: 4cm;
 }
 
 .count-view{
+padding-left: 1cm;
 float: left;
 }
 .success-msg{
@@ -44,6 +45,7 @@ text-align:center;
 color: blue;
 }
 .about-detail{
+text-align: justify;
+text-justify: inter-word;
  font-size: 120%;
- padding-right: 2cm;
 }
