@@ -34,8 +34,11 @@
 
 <div class="wrapper">
 
+<c:if test = "${not empty successMsg}">
+<h3 class="success-msg">${successMsg}</h3>
+</c:if>
+
 <div class="about-detail">
-<div class="success-msg">${successMsg}</div>
 <h2 class="welcome-text">Welcome to Samuhik Vivah</h2>
 		This is the platform where poor or needy people or anyone who knows such people around them can register with us for marraige of their daughter, First they have to find suitable life partner for their daughter afterward we will include her in samuhik shadi, which will take place at my home address for other pairs as well.Please feel free to contact me or register here or visit my home place.
 		</br>
