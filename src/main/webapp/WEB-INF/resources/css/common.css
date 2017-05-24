@@ -1,0 +1,49 @@
+body {
+  background-image: url("bg.png");
+}
+td {
+    height: 40px;
+    vertical-align: top;
+}
+.text-view {
+color: blue;
+}
+
+.wrapper {
+padding-top: 0cm;
+padding-left: 4cm;
+     width: 1005px;
+     margin: 0 auto;
+}
+
+.my-address {
+    float: left;
+    min-height: 300px;
+    width: 250px;
+}
+
+.registration-form {
+    float: left;
+     width: 350px;
+}
+.contact-me{
+    float: left;
+     width: 350px;
+}
+
+.count-view{
+float: left;
+}
+.success-msg{
+font-size: 150%;
+color: green;
+}
+
+.welcome-text{
+text-align:center;
+color: blue;
+}
+.about-detail{
+ font-size: 120%;
+ padding-right: 2cm;
+}
