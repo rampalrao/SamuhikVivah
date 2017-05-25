@@ -50,6 +50,20 @@ Language:
 </div>
 </div>
 <div class="row">
+<div class="col-md-9"></div>
+<div class="col-md-3">
+<div class="ViewAllUser">View All User<a href="/viewAllUser">View All User</a>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-9"></div>
+<div class="col-md-3">
+<div class="logout"><a href="/logout">Logout</a>
+</div>
+</div>
+</div>
+<div class="row">
 <div class="col-md-12"><h2 class="welcome-text">Welcome to Samuhik Vivah</h2>
 </div>
 </div>
