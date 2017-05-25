@@ -14,9 +14,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
 
-		System.out.println("user name:"+username);
 		SimpleGrantedAuthority  g = new SimpleGrantedAuthority("ROLE_USER");
-		UserDetails u = new User(username, "admin", true, true, true, true, Arrays.asList(g));
+		UserDetails u = new User(username, "rahul2015", true, true, true, true, Arrays.asList(g));
 		return u;
 	}
 }

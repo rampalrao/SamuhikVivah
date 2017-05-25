@@ -11,6 +11,9 @@ color: blue;
 .language{
 text-align:right;
 }
+.adminView{
+text-align:center;
+}
 .wrapper {
 padding-top: 0cm;
 padding-left: 4cm;

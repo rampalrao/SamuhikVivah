@@ -49,13 +49,7 @@ Language:
 </div>
 </div>
 </div>
-<div class="row">
-<div class="col-md-9"></div>
-<div class="col-md-3">
-<div class="ViewAllUser">View All User<a href="/viewAllUser">View All User</a>
-</div>
-</div>
-</div>
+
 <div class="row">
 <div class="col-md-12"><h2 class="welcome-text">Welcome to Samuhik Vivah</h2>
 </div>
@@ -137,6 +131,7 @@ Language:
 <div class="count-view">
    <h4>Total Registration Count: ${registrationCount}</h4>
    <h4>Total Page View Count: ${pageViewCount}</h4>
+   <div class="adminView"><a href="/viewAllUser">Admin View</a></div>
    </div>
 </div>
 
