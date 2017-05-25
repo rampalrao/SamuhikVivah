@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -27,30 +28,45 @@ public class HomePageController {
     private static AtomicInteger totalRegistrationCount=new AtomicInteger(0);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String showHomePage(ModelMap modelMap) {
-        int pageViewCount=totalPageViewCount.incrementAndGet();
-        int registrationCount=totalRegistrationCount.get();
+    public String showHomePage(HttpServletRequest request, ModelMap modelMap) {
+        String lang = request.getParameter("lang");
+        int pageViewCount = totalPageViewCount.incrementAndGet();
+        int registrationCount = totalRegistrationCount.get();
         modelMap.addAttribute("pageViewCount", pageViewCount);
         modelMap.addAttribute("registrationCount", registrationCount);
-        modelMap.addAttribute("user",new User());
-        return "homepage";
+        UserDTO user = new UserDTO();
+        if (null == lang || lang.equalsIgnoreCase("en")) {
+            user.setLang("en");
+        } else {
+            user.setLang("hindi");
+        }
+        modelMap.addAttribute("user", user);
+        if (user.getLang().equalsIgnoreCase("en")) {
+            return "homepage";
+        } else {
+            if (modelMap.get("successMsg") != null) {
+                modelMap.addAttribute("successMsg", "सफलतापूर्वक पंजीकृत।");
+            }
+            return "homepage_hindi";
+        }
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public String addStudent(@ModelAttribute(value = "user") UserDTO userdto, ModelMap modelMap, final RedirectAttributes redirectAttributes) {
+    public String addUser(@ModelAttribute(value = "user") UserDTO userdto, ModelMap modelMap, final RedirectAttributes redirectAttributes) {
         User user = new User();
         user.setName(userdto.getName());
         user.setMobile(userdto.getMobile());
         user.setAddress(userdto.getAddress());
+        String langauge=userdto.getLang();
         userService.addUser(user);
-        modelMap.addAttribute("user",new User());
+        modelMap.addAttribute("user",new UserDTO());
         totalRegistrationCount.incrementAndGet();
         redirectAttributes.addFlashAttribute("successMsg", "User registered successfully.");
-        return "redirect:/";
+        return "redirect:/?lang="+langauge;
     }
 
     @RequestMapping(value = "/viewAllUser", method = RequestMethod.GET)
-    public String getAllStudent(ModelMap map) {
+    public String viewAllUser(ModelMap map) {
         List<UserDTO> userDTOs = new ArrayList<>();
         List<User> users = userService.getAllUsers();
         for (User user : users) {

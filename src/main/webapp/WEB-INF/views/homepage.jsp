@@ -39,7 +39,16 @@
 <div class="col-md-12"><h3 class="success-msg">${successMsg}</h3></div>
 </div>
 </c:if>
-
+<div class="row">
+<div class="col-md-9"></div>
+<div class="col-md-3">
+<div class="language">
+Language:
+<a href="/?lang=en">English</a> |
+<a href="/?lang=hindi">Hindi</a>
+</div>
+</div>
+</div>
 <div class="row">
 <div class="col-md-12"><h2 class="welcome-text">Welcome to Samuhik Vivah</h2>
 </div>
@@ -87,7 +96,7 @@
         			 <td><form:textarea path="address" rows="5" cols="30" /></td>
 				</tr>
 			<tr>
-			   <td></td>
+			   <td><input type="hidden" name="lang" value="${user.lang}"></td>
                            <td>
 				<div class="form-group">
 				<button class="btn btn-primary " name="submit" type="submit">Submit</button>

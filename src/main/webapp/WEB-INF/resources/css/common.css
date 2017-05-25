@@ -8,7 +8,9 @@ td {
 .text-view {
 color: blue;
 }
-
+.language{
+text-align:right;
+}
 .wrapper {
 padding-top: 0cm;
 padding-left: 4cm;
@@ -19,7 +21,7 @@ padding-left: 4cm;
 .my-address {
     float: left;
     min-height: 300px;
-    width: 250px;
+    width: 200px;
 }
 
 .registration-form {
