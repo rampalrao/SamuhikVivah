@@ -13,4 +13,6 @@ public interface UserService {
     List<User> getAllUsers();
 
     void deleteUser(long id);
+
+    int getTotalRegistrationCount();
 }

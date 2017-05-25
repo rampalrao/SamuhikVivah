@@ -33,4 +33,10 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(long id) {
          userDao.deleteUser(id);
     }
+
+    @Override
+    @Transactional
+    public int getTotalRegistrationCount() {
+        return getAllUsers().size();
+    }
 }

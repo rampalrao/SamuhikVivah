@@ -24,16 +24,15 @@ public class HomePageController {
     @Autowired
     private UserService userService;
 
-    private static AtomicInteger totalPageViewCount=new AtomicInteger(0);
+    private static AtomicInteger totalPageViewCount=new AtomicInteger(100);
     private static AtomicInteger totalRegistrationCount=new AtomicInteger(0);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showHomePage(HttpServletRequest request, ModelMap modelMap) {
         String lang = request.getParameter("lang");
         int pageViewCount = totalPageViewCount.incrementAndGet();
-        int registrationCount = totalRegistrationCount.get();
         modelMap.addAttribute("pageViewCount", pageViewCount);
-        modelMap.addAttribute("registrationCount", registrationCount);
+        modelMap.addAttribute("registrationCount", totalRegistrationCount());
         UserDTO user = new UserDTO();
         if (null == lang || lang.equalsIgnoreCase("en")) {
             user.setLang("en");
@@ -60,9 +59,12 @@ public class HomePageController {
         String langauge=userdto.getLang();
         userService.addUser(user);
         modelMap.addAttribute("user",new UserDTO());
-        totalRegistrationCount.incrementAndGet();
         redirectAttributes.addFlashAttribute("successMsg", "User registered successfully.");
         return "redirect:/?lang="+langauge;
+    }
+
+    private int totalRegistrationCount(){
+        return userService.getTotalRegistrationCount();
     }
 
     @RequestMapping(value = "/viewAllUser", method = RequestMethod.GET)
