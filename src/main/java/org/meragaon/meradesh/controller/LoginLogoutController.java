@@ -1,6 +1,5 @@
 package org.meragaon.meradesh.controller;
 
-import org.meragaon.meradesh.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +25,15 @@ public class LoginLogoutController {
 	public ModelAndView login(ModelMap m) {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("login");
+		return model;
+
+	}
+	
+	@RequestMapping(value = { "/accessdenied"}, method = {RequestMethod.GET})
+	public ModelAndView accessdenied(ModelMap m) {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("login");
+		model.getModelMap().addAttribute("msg", "Invalid Credentials");
 		return model;
 
 	}

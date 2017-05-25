@@ -6,9 +6,10 @@
 	<sec:http authentication-manager-ref="authenticationManager" auto-config="true"  use-expressions="true">
         <sec:intercept-url pattern="/login" access="permitAll" />
         <sec:intercept-url pattern="/logout" access="permitAll" />
+        <sec:intercept-url pattern="/accessdenied" access="permitAll" />
         <sec:intercept-url pattern="/viewAlluser" access="hasRole('ROLE_USER')" />
         <sec:intercept-url pattern="/" access="permitAll" />
-        <sec:form-login login-page="/login" default-target-url="/viewAllUser" authentication-failure-url="/login" />
+        <sec:form-login login-page="/login" default-target-url="/viewAllUser"  authentication-failure-url="/accessdenied" />
         <sec:logout invalidate-session="true" logout-url="/logout"  logout-success-url="/"/>
         <sec:csrf/>
     </sec:http>
