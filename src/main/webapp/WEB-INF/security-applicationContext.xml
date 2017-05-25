@@ -1,0 +1,21 @@
+<beans xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+	<sec:global-method-security pre-post-annotations="enabled" />
+	<sec:http authentication-manager-ref="authenticationManager" auto-config="true"  use-expressions="true">
+        <sec:intercept-url pattern="/login" access="permitAll" />
+        <sec:intercept-url pattern="/logout" access="permitAll" />
+        <sec:intercept-url pattern="/viewAlluser" access="hasRole('ROLE_USER')" />
+        <sec:intercept-url pattern="/" access="permitAll" />
+        <sec:form-login login-page="/login" default-target-url="/viewAllUser" authentication-failure-url="/login" />
+        <sec:logout invalidate-session="true" logout-url="/logout"  logout-success-url="/"/>
+        <sec:csrf/>
+    </sec:http>
+	
+	<bean id="userDetailsService" class="org.meragaon.meradesh.service.CustomUserDetailsService" />
+
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider user-service-ref="userDetailsService" />
+	</sec:authentication-manager>	
+</beans>
