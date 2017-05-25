@@ -11,4 +11,6 @@ public interface UserService {
     void addUser(User student);
 
     List<User> getAllUsers();
+
+    void deleteUser(long id);
 }

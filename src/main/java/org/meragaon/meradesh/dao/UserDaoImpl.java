@@ -25,4 +25,11 @@ public class UserDaoImpl implements UserDao {
     public void addUser(User user) {
         this.sessionFactory.getCurrentSession().save(user);
     }
+
+    @Override
+    public void deleteUser(long id) {
+        User user=new User();
+        user.setUserId(id);
+        this.sessionFactory.getCurrentSession().delete(user);
+    }
 }

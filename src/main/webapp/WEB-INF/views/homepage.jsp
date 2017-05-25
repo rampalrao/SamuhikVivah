@@ -85,15 +85,16 @@ Language:
                          <table >
                           <tr>
         			 <td><form:label path="name">Name</form:label></td>
-        			 <td><form:input path="name" /></td>
+        			 <td><form:input path="name" required="true" oninvalid="this.setCustomValidity('Enter Name Here')"
+    oninput="setCustomValidity('')"/></td>
         		      </tr>
         		      <tr>
         			 <td><form:label path="mobile">Mobile</form:label></td>
-        			 <td><form:input path="mobile" /></td>
+        			 <td><form:input path="mobile" required="true" pattern="[0-9]{10}" oninvalid="this.setCustomValidity('Enter valid mobile number Here')" oninput="setCustomValidity('')"/></td>
         		      </tr>
         		      <tr>
         			 <td><form:label path="address">Address</form:label></td>
-        			 <td><form:textarea path="address" rows="5" cols="30" /></td>
+        			 <td><form:textarea path="address" rows="5" cols="30" maxlength="100" minlength="5" required="true"  oninvalid="this.setCustomValidity('Enter your address Here')" oninput="setCustomValidity('')"/></td>
 				</tr>
 			<tr>
 			   <td><input type="hidden" name="lang" value="${user.lang}"></td>

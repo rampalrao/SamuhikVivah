@@ -86,15 +86,15 @@
                          <table >
                           <tr>
         			 <td><form:label path="name">नाम</form:label></td>
-        			 <td><form:input path="name" /></td>
+        			 <td><form:input path="name" required="true" oninvalid="this.setCustomValidity('नाम लिखें')" oninput="setCustomValidity('')"/></td>
         		      </tr>
         		      <tr>
         			 <td><form:label path="mobile">मोबाइल</form:label></td>
-        			 <td><form:input path="mobile" /></td>
+        			 <td><form:input path="mobile" required="true" pattern="[0-9]{10}" oninvalid="this.setCustomValidity('मान्य मोबाइल नंबर यहां दर्ज करें')" oninput="setCustomValidity('')"/></td>
         		      </tr>
         		      <tr>
         			 <td><form:label path="address">पता</form:label></td>
-        			 <td><form:textarea path="address" rows="5" cols="30" /></td>
+        			 <td><form:textarea path="address" rows="5" cols="30" maxlength="100" minlength="5" required="true"  oninvalid="this.setCustomValidity('अपना पता दर्ज करें')" oninput="setCustomValidity('')"/></td>
 				</tr>
 			<tr>
 			   <td><input type="hidden" name="lang" value="${user.lang}"></td>

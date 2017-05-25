@@ -71,6 +71,7 @@ public class HomePageController {
         List<User> users = userService.getAllUsers();
         for (User user : users) {
             UserDTO userdto = new UserDTO();
+            userdto.setId(user.getUserId());
             userdto.setName(user.getName());
             userdto.setMobile(user.getMobile());
             userdto.setAddress(user.getAddress());
@@ -78,5 +79,16 @@ public class HomePageController {
         }
         map.addAttribute("userList", userDTOs);
         return "viewAllUser";
+    }
+
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
+    public String deleteUserById(HttpServletRequest request, final RedirectAttributes redirectAttributes) {
+        String id=request.getParameter("id");
+        if(null!=id){
+            long userId=Long.parseLong(id);
+            userService.deleteUser(userId);
+            redirectAttributes.addFlashAttribute("deleteMsg","User deleted successfully.");
+        }
+        return "redirect:/viewAllUser";
     }
 }

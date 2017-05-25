@@ -8,20 +8,36 @@
 <link type="text/css" rel="stylesheet" href="resources/css/common.css" />
 </head>
 <body>
+<div class="container">
+<c:if test = "${not empty deleteMsg}">
+<div class="row">
+<div class="col-md-12"><h3 class="success-msg">${deleteMsg}</h3></div>
+</div>
+</c:if>
+
 <div class="view-all-user">
 <h2 class="text-view">Registered Grooms/Brides</h2>
 <table border="2" width="70%" cellpadding="2">
-<tr><th>Name</th><th>Mobile No</th><th>Address</th></tr>
-   <c:forEach var="user" items="${userList}">
-   <tr>
-   <td>${user.name}</td>
-   <td>${user.mobile}</td>
-   <td>${user.address}</td>
-   </tr>
-   </c:forEach>
+<tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Mobile No</th>
+    <th>Address</th>
+    <th>Action</th>
+</tr>
+<c:forEach var="user" items="${userList}">
+<tr>
+    <td>${user.id}</td>
+    <td>${user.name}</td>
+    <td>${user.mobile}</td>
+    <td>${user.address}</td>
+    <td><a href="/deleteUser?id=${user.id}">Delete</a></td>
+</tr>
+</c:forEach>
 </table>
 </br>
 <a href="/">Back To Home</a>
+</div>
 </div>
 </head>
 </html>
