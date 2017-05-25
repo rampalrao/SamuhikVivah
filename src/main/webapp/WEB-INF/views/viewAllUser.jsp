@@ -36,7 +36,7 @@
 </c:forEach>
 </table>
 </br>
-<a href="/">Back To Home</a>
+<a href="/logout">Back To Home</a>
 </div>
 </div>
 </head>
