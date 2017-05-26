@@ -9,6 +9,11 @@
 </head>
 <body>
 <div class="container">
+<c:if test = "${not empty accessMsg}">
+<div class="row">
+<div class="col-md-12"><h3 class="success-msg">${accessMsg}</h3></div>
+</div>
+</c:if>
 <c:if test = "${not empty deleteMsg}">
 <div class="row">
 <div class="col-md-12"><h3 class="success-msg">${deleteMsg}</h3></div>
@@ -36,7 +41,7 @@
 </c:forEach>
 </table>
 </br>
-<a href="/logout">Back To Home</a>
+<a href="/">Back To Home</a>
 </div>
 </div>
 </head>

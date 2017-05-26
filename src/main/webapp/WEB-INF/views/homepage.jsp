@@ -70,7 +70,7 @@ Language:
 <div class="col-md-4">
 <div class="my-address">
         <h3>Home Address</h3>
-	<p>Gamha Rao</p>
+	<p><b>Father Name:</b> Gamha Rao</p>
 	<p><b>Village:</b> Bihar Khurd Bangla</p>
 	<p><b>Post:</b> Bihar Buzurg</p>
 	<p><b>Thana:</b> Patherwa</p>
@@ -113,7 +113,7 @@ Language:
 <div class="col-md-4">
 <div class="contact-me">
         <h3>Contact me</h3>
-	<p>Rampal Rao</p>
+	<p><b>Rampal Rao</b></p>
 	<p><b>Phone:</b> +91-8130535050 , +91-8860709808</p>
 	<p><b>Email:</b> <a href="mailto:rprao.2k7@gmail.com" style="text-decoration:none">rprao.2k7@gmail.com</a></p>
 	<p><b>Facebook:</b> <a href = "http://facebook.com/rampalrao007" style="text-decoration:none">rampalrao007</a></p>
@@ -131,7 +131,6 @@ Language:
 <div class="count-view">
    <h4>Total Registration Count: ${registrationCount}</h4>
    <h4>Total Page View Count: ${pageViewCount}</h4>
-   <div class="adminView"><a href="/viewAllUser">Admin View</a></div>
    </div>
 </div>
 

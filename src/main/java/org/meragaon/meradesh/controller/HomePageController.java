@@ -2,6 +2,7 @@ package org.meragaon.meradesh.controller;
 
 import org.meragaon.meradesh.dto.UserDTO;
 import org.meragaon.meradesh.entity.User;
+import org.meragaon.meradesh.service.RegistrationCount;
 import org.meragaon.meradesh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,15 +25,22 @@ public class HomePageController {
     @Autowired
     private UserService userService;
 
-    private static AtomicInteger totalPageViewCount=new AtomicInteger(100);
-    private static AtomicInteger totalRegistrationCount=new AtomicInteger(0);
+    private static AtomicInteger totalPageViewCount = new AtomicInteger(100);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showHomePage(HttpServletRequest request, ModelMap modelMap) {
         String lang = request.getParameter("lang");
+
         int pageViewCount = totalPageViewCount.incrementAndGet();
         modelMap.addAttribute("pageViewCount", pageViewCount);
-        modelMap.addAttribute("registrationCount", totalRegistrationCount());
+        int registrationCount;
+        if (!RegistrationCount.initialized) {
+            registrationCount = userService.getTotalRegistrationCount();
+            RegistrationCount.getInstance().setCount(registrationCount);
+        } else {
+            registrationCount = RegistrationCount.getInstance().getCount();
+        }
+        modelMap.addAttribute("registrationCount", registrationCount);
         UserDTO user = new UserDTO();
         if (null == lang || lang.equalsIgnoreCase("en")) {
             user.setLang("en");
@@ -56,28 +64,30 @@ public class HomePageController {
         user.setName(userdto.getName());
         user.setMobile(userdto.getMobile());
         user.setAddress(userdto.getAddress());
-        String langauge=userdto.getLang();
+        String langauge = userdto.getLang();
         userService.addUser(user);
-        modelMap.addAttribute("user",new UserDTO());
+        modelMap.addAttribute("user", new UserDTO());
         redirectAttributes.addFlashAttribute("successMsg", "User registered successfully.");
-        return "redirect:/?lang="+langauge;
-    }
-
-    private int totalRegistrationCount(){
-        return userService.getTotalRegistrationCount();
+        return "redirect:/?lang=" + langauge;
     }
 
     @RequestMapping(value = "/viewAllUser", method = RequestMethod.GET)
-    public String viewAllUser(ModelMap map) {
+    public String viewAllUser(HttpServletRequest request, ModelMap map) {
+        String userName = request.getParameter("username");
+        String password = request.getParameter("password");
         List<UserDTO> userDTOs = new ArrayList<>();
-        List<User> users = userService.getAllUsers();
-        for (User user : users) {
-            UserDTO userdto = new UserDTO();
-            userdto.setId(user.getUserId());
-            userdto.setName(user.getName());
-            userdto.setMobile(user.getMobile());
-            userdto.setAddress(user.getAddress());
-            userDTOs.add(userdto);
+        if (userName != null && password != null && userName.equals("admin") && password.equals("rahul")) {
+            List<User> users = userService.getAllUsers();
+            for (User user : users) {
+                UserDTO userdto = new UserDTO();
+                userdto.setId(user.getUserId());
+                userdto.setName(user.getName());
+                userdto.setMobile(user.getMobile());
+                userdto.setAddress(user.getAddress());
+                userDTOs.add(userdto);
+            }
+        } else {
+            map.addAttribute("accessMsg", "You are not authorized to view list.");
         }
         map.addAttribute("userList", userDTOs);
         return "viewAllUser";
@@ -85,12 +95,12 @@ public class HomePageController {
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
     public String deleteUserById(HttpServletRequest request, final RedirectAttributes redirectAttributes) {
-        String id=request.getParameter("id");
-        if(null!=id){
-            long userId=Long.parseLong(id);
+        String id = request.getParameter("id");
+        if (null != id) {
+            long userId = Long.parseLong(id);
             userService.deleteUser(userId);
-            redirectAttributes.addFlashAttribute("deleteMsg","User deleted successfully.");
+            redirectAttributes.addFlashAttribute("deleteMsg", "User deleted successfully.");
         }
-        return "redirect:/viewAllUser";
+        return "redirect:/viewAllUser?username=admin&password=rahul";
     }
 }

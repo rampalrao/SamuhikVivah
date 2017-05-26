@@ -20,6 +20,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void addUser(User user) {
         userDao.addUser(user);
+        RegistrationCount.getInstance().setCount(getTotalRegistrationCount());
     }
 
     @Override
@@ -31,7 +32,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void deleteUser(long id) {
-         userDao.deleteUser(id);
+        userDao.deleteUser(id);
+        RegistrationCount.getInstance().setCount(getTotalRegistrationCount());
     }
 
     @Override
