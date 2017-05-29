@@ -28,7 +28,7 @@
 <meta charset="UTF-8">
 
 <!-- Favicons -->
-<link rel="shortcut icon" href="resources/css/icon.png">
+<link rel="shortcut icon" href="resources/images/icon.png">
 <link type="text/css" rel="stylesheet" href="resources/css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="resources/css/common.css" />
 </head>
@@ -40,7 +40,26 @@
 </div>
 </c:if>
 <div class="row">
-<div class="col-md-9"></div>
+<div class="col-md-9">
+<div class="share-buttons">
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=http://www.samuhikvivah.com" target="_blank">
+        <img src="../resources/images/facebook.png" alt="Facebook" />
+    </a>
+    <!-- Google+ -->
+    <a href="https://plus.google.com/share?url=http://www.samuhikvivah.com" target="_blank">
+        <img src="../resources/images/google.png" alt="Google" />
+    </a>
+    <!-- LinkedIn -->
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.samuhikvivah.com" target="_blank">
+        <img src="../resources/images/linkedin.png" alt="LinkedIn" />
+    </a>
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=http://www.samuhikvivah.com" target="_blank">
+        <img src="../resources/images/twitter.png" alt="Twitter" />
+    </a>
+</div>
+</div>
 <div class="col-md-3">
 <div class="language">
 Language:

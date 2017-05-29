@@ -1,5 +1,12 @@
 body {
-  background-image: url("bg.jpg");
+  background-image: url("../images/bg.jpg");
+}
+.share-buttons img {
+width: 35px;
+padding: 5px;
+border: 0;
+box-shadow: 0;
+display: inline;
 }
 td {
     height: 40px;
