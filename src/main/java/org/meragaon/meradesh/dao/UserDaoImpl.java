@@ -1,6 +1,7 @@
 package org.meragaon.meradesh.dao;
 
 import org.hibernate.SessionFactory;
+import org.meragaon.meradesh.entity.PageView;
 import org.meragaon.meradesh.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,5 +32,16 @@ public class UserDaoImpl implements UserDao {
         User user=new User();
         user.setUserId(id);
         this.sessionFactory.getCurrentSession().delete(user);
+    }
+
+    @Override
+    public int getPageViewCount() {
+        List<PageView> pageViews = this.sessionFactory.getCurrentSession().createQuery("from PageView").list();
+        if (pageViews != null && !pageViews.isEmpty()) {
+            PageView pageView = pageViews.get(0);
+            return pageView.getCount();
+        } else {
+            return 0;
+        }
     }
 }

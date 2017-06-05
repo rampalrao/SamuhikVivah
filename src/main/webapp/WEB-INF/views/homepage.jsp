@@ -33,6 +33,16 @@
 <link type="text/css" rel="stylesheet" href="resources/css/common.css" />
 </head>
 <body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div class="container">
 <c:if test = "${not empty successMsg}">
 <div class="row">
@@ -58,6 +68,7 @@
     <a href="https://twitter.com/share?url=http://www.samuhikvivah.com" target="_blank">
         <img src="../resources/images/twitter.png" alt="Twitter" />
     </a>
+
 </div>
 </div>
 <div class="col-md-3">
@@ -150,6 +161,8 @@ Language:
 <div class="count-view">
    <h4>Total Registration Count: ${registrationCount}</h4>
    <h4>Total Page View Count: ${pageViewCount}</h4>
+   <!--facebook like -->
+   <div class="fb-like" data-href="https://www.facebook.com/samuhikVivahInKushinagar/" data-layout="standard" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
    </div>
 </div>
 

@@ -1,5 +1,6 @@
 body {
   background-image: url("../images/bg.jpg");
+  overflow-x: hidden;
 }
 .share-buttons img {
 width: 35px;

@@ -25,13 +25,18 @@ public class HomePageController {
     @Autowired
     private UserService userService;
 
-    private static AtomicInteger totalPageViewCount = new AtomicInteger(100);
+    private static AtomicInteger totalPageViewCount ;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showHomePage(HttpServletRequest request, ModelMap modelMap) {
         String lang = request.getParameter("lang");
-
-        int pageViewCount = totalPageViewCount.incrementAndGet();
+        int pageViewCount;
+        if (totalPageViewCount == null) {
+            pageViewCount = userService.getTotalPageViewCount() + 1;
+            totalPageViewCount = new AtomicInteger(pageViewCount);
+        } else {
+            pageViewCount = totalPageViewCount.incrementAndGet();
+        }
         modelMap.addAttribute("pageViewCount", pageViewCount);
         int registrationCount;
         if (!RegistrationCount.initialized) {

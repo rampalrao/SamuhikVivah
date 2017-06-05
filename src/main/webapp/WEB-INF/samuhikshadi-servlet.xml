@@ -34,7 +34,7 @@
         <beans:property name="annotatedClasses">
             <beans:list>
                 <beans:value>org.meragaon.meradesh.entity.User</beans:value>
-
+                <beans:value>org.meragaon.meradesh.entity.PageView</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">

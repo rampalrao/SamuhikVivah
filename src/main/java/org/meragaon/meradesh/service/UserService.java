@@ -15,4 +15,6 @@ public interface UserService {
     void deleteUser(long id);
 
     int getTotalRegistrationCount();
+
+    int getTotalPageViewCount();
 }

@@ -14,4 +14,6 @@ public interface UserDao {
     void addUser(User user);
 
     void deleteUser(long id);
+
+    int getPageViewCount();
 }

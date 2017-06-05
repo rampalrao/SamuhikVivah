@@ -41,4 +41,10 @@ public class UserServiceImpl implements UserService {
     public int getTotalRegistrationCount() {
         return getAllUsers().size();
     }
+
+    @Override
+    @Transactional
+    public int getTotalPageViewCount() {
+        return userDao.getPageViewCount();
+    }
 }
